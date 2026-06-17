@@ -1,0 +1,11 @@
+langchain-community
+langchain-openai
+psycopg2-binary
+pgvector
+pypdf
+tiktoken
+python-dotenv
+openai
+google-generativeai
+flask
+google-genai

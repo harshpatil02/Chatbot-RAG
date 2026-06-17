@@ -12,12 +12,7 @@ A beautiful and interactive chatbot web interface for your RAG (Retrieval-Augmen
 
 ## Setup Instructions
 
-### 1. Install Flask
-```bash
-pip install flask
-```
-
-Or install all dependencies at once:
+### 1. Install 
 ```bash
 pip install -r requirements.txt
 ```
