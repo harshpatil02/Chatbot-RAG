@@ -1,0 +1,47 @@
+========================================================================
+PROJECT KNOWLEDGE BASE: ADVANCED ARTIFICIAL INTELLIGENCE ARCHITECTURES
+========================================================================
+Document ID: KB-2026-AI-01
+Classification: Public Training Data
+Last Updated: June 2026
+
+INTRODUCTION TO LARGE LANGUAGE MODELS (LLMs)
+--------------------------------------------
+Large Language Models are deep learning algorithms trained on massive datasets to understand, summarize, generate, and predict new content. Modern LLMs rely heavily on the Transformer architecture, which uses self-attention mechanisms to compute relationships between words in a sentence, regardless of their distance from one another.
+
+Core Limitations of Standard LLMs:
+1. Knowledge Cutoff: An LLM only knows information up to the exact date its training data was finalized. It remains completely blind to real-time events or newly created documents post-training.
+2. Hallucinations: When an LLM lacks specific data to answer a query, it may confidently generate false or fabricated information that sounds highly plausible.
+3. Lack of Private Context: Standard commercial LLMs do not have access to an individual's private enterprise files, local codebases, or proprietary business metrics.
+
+RETRIEVAL-AUGMENTED GENERATION (RAG)
+------------------------------------
+Retrieval-Augmented Generation (RAG) is an architectural pattern designed to optimize the output of an LLM by referencing an authoritative, external knowledge base before generating a response. 
+
+The three core phases of a standard RAG pipeline are:
+1. Ingestion: Raw documents (PDFs, Markdown, Word docs) are broken down into smaller, manageable pieces called "chunks". These chunks are passed through an embedding model which converts the human text into a multi-dimensional mathematical array called a vector embedding. These embeddings are then stored in a specialized vector database (such as PostgreSQL using the pgvector extension).
+2. Retrieval: When a user submits a query, the system vectorizes the query and performs a similarity metric calculation (like Cosine Distance or Inner Product). It extracts the top "N" text chunks from the vector database that are closest in meaning to the user's question.
+3. Generation: The system merges the retrieved text chunks along with the user's original question into a structured prompt templates. This prompt is sent to the LLM. Because the LLM receives the exact facts within its prompt window, it can synthesize a highly accurate answer without hallucinating.
+
+VECTOR EMBEDDINGS AND MATHEMATICAL OPERATORS
+---------------------------------------------
+A vector embedding maps semantic meaning into a continuous vector space. For example, the OpenAI embedding model "text-embedding-3-small" outputs a precise array containing exactly 1,536 dimensions. 
+
+When searching these vectors within a relational database using the pgvector extension, special mathematical operators are used to calculate semantic similarity:
+- The `<->` operator calculates Euclidean Distance (L2 distance).
+- The `<#>` operator calculates Negative Inner Product.
+- The `<=>` operator calculates Cosine Distance, which evaluates the angle between two vectors and is widely used for text matching because it focuses on semantic direction rather than document length.
+
+AGENTIC AI ARCHITECTURES
+-------------------------
+Agentic AI represents a fundamental shift from static chat interfaces to autonomous, goal-oriented AI systems. While standard RAG systems simply search and summarize, an AI Agent can reason, break a complex goal down into smaller tasks, choose external tools, and execute them iteratively.
+
+Key Components of an AI Agent:
+1. Core LLM: Acts as the central "brain" or reasoning engine making decisions.
+2. Memory: Keeps track of past interactions (Short-term working memory) and stores historical context or user preferences (Long-term memory).
+3. Tools: Executable code blocks or APIs that the agent can choose to call when it needs external information. Examples include a Web Search tool, a Database Query tool, a Calculator, or a Local File Writer.
+4. Planning & Reflection: The agent evaluates its own intermediate outputs, checks for errors, and loops back to try a different approach if its initial tool call fails to achieve the specified goal.
+
+========================================================================
+END OF FILE - KB-2026-AI-01
+========================================================================

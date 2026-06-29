@@ -9,3 +9,5 @@ openai
 google-generativeai
 flask
 google-genai
+pandas
+openpyxl
